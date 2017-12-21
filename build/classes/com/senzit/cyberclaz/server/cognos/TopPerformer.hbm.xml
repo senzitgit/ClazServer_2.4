@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.cognos.TopPerformer" table="topperformer">
+    
+	  <id name="topPerformerId" type="int">
+            <column name="TOPPERFORMERID" />
+            <generator class="increment" />
+        </id>
+      
+ <many-to-one name="classEventDetail" column="CLASSEVENTDETAILID" class="com.senzit.cyberclaz.server.model.ClassEventDetail"> 
+      </many-to-one>
+        <property name="likes" column="NOOFTIMES" type="int"/>			
+     
+	</class>
+</hibernate-mapping>

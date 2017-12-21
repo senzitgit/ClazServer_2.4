@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.senzit.cyberclaz.server.model.Course" table="course">
+		<meta attribute="class-description">
+			This class contains the Course details.
+		</meta>
+		<id name="courseId" column="COURSEID">
+		</id>
+		<property name="courseName" column="COURSENAME" type="string" />
+		<property name="courseDescription" column="COURSEDESCRIPTION"
+			type="string" />
+		<property name="courseCategory" column="COURSECATEGORY" type="string" />
+		<property name="courseDuration" column="COURSEDURATION" type="string" />
+		<property name="currentScheme" column="CURRENTSCHEME" type="string" />
+		<property name="semOrYear" column="SEMORYEAR" type="string" />
+		<property name="department" column="DEPARTMENT" type="string" />
+		<property name="distantOrRegular" column="DISTANTORREGULAR"
+			type="string" />
+	</class>
+</hibernate-mapping>

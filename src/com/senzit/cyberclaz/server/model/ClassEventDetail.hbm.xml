@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="com.senzit.cyberclaz.server.model.ClassEventDetail"
+		table="classeventdetail">
+		<meta attribute="class-description">
+			This class contains the user detail.
+		</meta>
+		<id name="classEventDetailId" column="CLASSEVENTDETAILID">
+			<generator class="increment"></generator>
+		</id>
+		<many-to-one name="schedule" column="SCHEDULEID" class="com.senzit.cyberclaz.server.model.Schedule">	
+     	</many-to-one>
+      	<!-- <many-to-one name="tempSchedule" column="TEMPSCHEDULEID" class="com.senzit.cyberclaz.server.model.TempSchedule">	
+     	</many-to-one>-->
+     	<!-- <many-to-one name="note" column="NOTEID" class="com.senzit.cyberclaz.server.model.Note">	
+     	</many-to-one>-->
+		<property name="generalLog" column="GENERALLOG" type="text" />
+		<property name="chapterName" column="CHAPTERNAME" type="string" />
+		<property name="topicName" column="TOPICNAME" type="string" />
+		<property name="ftpLocation" column="FTPLOCATION" type="string" />
+		<property name="attachmentFlag" column="ATTACHMENTFLAG" type="boolean" />
+		<property name="startTime" column="STARTTIME" type="timestamp" />
+		<property name="endTime" column="ENDTIME" type="timestamp" />
+		<property name="totalAttendees" column="TOTALATTENDEES" type="int" />
+		<property name="scheduleFlag" column="SCHEDULEFLAG" type="string" />
+			<property name="subjectName" column="SUBJECTNAME" type="string" />
+			<property name="courseName" column="COURSENAME" type="string" />
+			<property name="teacherName" column="TEACHERNAME" type="string" />
+			<property name="teacherId" column="TEACHERID" type="string" />
+			<property name="teacherPic" column="TEACHERPIC" type="string" />
+			<property name="clazFlag" column="CLAZFLAG" type="int" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.cognos.TargetPassPercentage" table="targetpasspercentage">
+    
+	  <id name="targetId" type="int">
+            <column name="TARGETID" />
+            <generator class="increment" />
+        </id>
+       <many-to-one name="user" column="USERID" class="com.senzit.cyberclaz.server.model.User">	
+     	</many-to-one>
+  
+      	<many-to-one name="courseBatch" column="COURSEBATCHID"
+			class="com.senzit.cyberclaz.server.model.CourseBatch">
+		</many-to-one>
+        <property name="target" column="TARGET" type="string"/>			
+     
+	</class>
+</hibernate-mapping>

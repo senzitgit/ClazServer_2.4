@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.Role" table="role">
+	<meta attribute="class-description">
+		This class contains the user detail.
+	</meta>
+		<id name="roleId" column="ROLEID">
+        </id>
+		<property name="roleName" column="ROLENAME" type="string"/>
+		<property name="roleDescription" column="ROLEDESCRIPTION" type="string"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.SubjectTeacher" table="subjectteacher">
+	<meta attribute="class-description">
+		This class contains the user course batch detail.
+	</meta>
+		<id name="subjectTeacherId" column="SUBJECTTEACHERID">
+		    <generator class="increment"></generator>
+        </id>
+     	<many-to-one name="teacher" column="USERID" class="com.senzit.cyberclaz.server.model.User">	
+     	</many-to-one>
+     	<many-to-one name="courseSubject" column="COURSESUBJECTID" class="com.senzit.cyberclaz.server.model.CourseSubject">	
+     	</many-to-one>
+     	<many-to-one name="batch" column="BATCHID" class="com.senzit.cyberclaz.server.model.Batch">	
+     	</many-to-one>
+	</class>
+</hibernate-mapping>

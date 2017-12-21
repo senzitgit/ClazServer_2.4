@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.cognos.ProgressReports" table="progressreports">
+	<meta attribute="class-description">
+		This class contains the user login detail.
+	</meta>
+		        <id name="progressId" type="int">
+            <column name="PROGRESSID" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="user" column="USERID" class="com.senzit.cyberclaz.server.model.User">	
+     	</many-to-one>
+     	<many-to-one name="subject" column="SUBJECTID" class="com.senzit.cyberclaz.server.model.Subject">	
+     	</many-to-one>
+       	<property name="term" column="TERM" type="string"/>
+        <property name="marks" column="MARKS" type="string"/>			
+    
+	</class>
+</hibernate-mapping>

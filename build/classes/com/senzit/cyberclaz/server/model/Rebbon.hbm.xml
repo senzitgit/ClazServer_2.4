@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.Rebbon" table="rebbon">
+	<meta attribute="class-description">
+		This class contains the user rebbon detail.
+	</meta>
+		<id name="rebbonId" column="REBBONID">
+        </id>
+     	<property name="rebbonLink" column="REBBONLINK" type="string" unique="true"/>
+     	<many-to-one name="classRoom" column="CLASSROOMID" class="com.senzit.cyberclaz.server.model.ClassRoom"
+     					unique="true">	
+     	</many-to-one>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.UserRole" table="userrole">
+	<meta attribute="class-description">
+		This class contains the user login detail.
+	</meta>
+		<id name="userId" column="USERID">
+            <generator class="foreign">
+                <param name="property">user</param>
+            </generator>
+        </id>
+        <one-to-one name="user" class="com.senzit.cyberclaz.server.model.User"
+        		constrained="true">	
+     	</one-to-one>
+     	<many-to-one name="role" column="ROLEID" class="com.senzit.cyberclaz.server.model.Role">	
+     	</many-to-one>
+	</class>
+</hibernate-mapping>

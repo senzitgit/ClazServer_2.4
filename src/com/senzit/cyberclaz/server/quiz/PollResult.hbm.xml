@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.senzit.cyberclaz.server.quiz.PollResult" table="poll_result">
+	
+		<id name="pollResultId" column="POLLRESULTID">
+			<generator class="native"></generator>
+        </id>
+		<many-to-one name="pollOption" class="com.senzit.cyberclaz.server.quiz.PollOption" column="POLLOPTIONID">
+        </many-to-one>
+		<many-to-one name="user" class="com.senzit.cyberclaz.server.model.User" column="USERID">
+        </many-to-one>
+        
+	</class>
+</hibernate-mapping>

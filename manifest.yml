@@ -1,0 +1,6 @@
+---
+applications:
+- name: CyberClazServer
+  memory: 512M
+  host: clazserver
+  domain: mybluemix.net

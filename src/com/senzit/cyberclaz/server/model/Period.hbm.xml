@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.Period" table="period">
+	<meta attribute="class-description">
+		This class contains the user detail.
+	</meta>
+		<id name="periodId" column="PERIODID">
+        </id>
+		<property name="startTime" column="STARTTIME" type="string"/>
+		<property name="endTime" column="ENDTIME" type="string"/>
+	</class>
+</hibernate-mapping>

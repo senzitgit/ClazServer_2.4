@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.RolePrivilege" table="roleprivilege">
+	<meta attribute="class-description">
+		This class contains the ROLE-PRIVILEGE detail.
+	</meta>
+		<id name="rolePrivilegeId" column="ROLEPRIVILEGEID">
+        </id>
+		<many-to-one name="role" column="ROLEID" class="com.senzit.cyberclaz.server.model.Role">	
+     	</many-to-one>
+     	<many-to-one name="privilege" column="PRIVILEGEID" class="com.senzit.cyberclaz.server.model.Privilege">	
+     	</many-to-one>
+	</class>
+</hibernate-mapping>

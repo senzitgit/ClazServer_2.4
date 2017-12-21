@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.Notification" table="notification">
+ <meta attribute="class-description">
+  This class contains the user note detail.
+ </meta>
+  <id name="notificationId" column="NOTIFICATIONID">
+   <generator class="increment"></generator>
+        </id>
+      <property name="fromUserId" column="FROMUSERID" type="string"/>
+      <property name="toUserId" column="TOUSERID" type="string"/>
+      <many-to-one name="classEventDetail" column="CLASSEVENTDETAILID" class="com.senzit.cyberclaz.server.model.ClassEventDetail"> 
+      </many-to-one>
+  <property name="notification" column="NOTIFICATION" type="text"/>
+  <property name="notificationAnswer" column="NOTIFICATIONANSWER" type="string"/>
+  <property name="createdOn" column="CREATEDON" type="timestamp"/>
+   <property name="reminderOrRaiseHandFlag" column="FLAG" type="string"/>
+     <property name="notificationFlag" column="NOTIFICATIONFLAG" type="string"/>
+ </class>
+</hibernate-mapping>

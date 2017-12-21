@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.ClassRoom" table="classroom">
+	<meta attribute="class-description">
+		This class contains the class room detail.
+	</meta>
+		<id name="classRoomId" column="CLASSROOMID">
+        </id>
+     	<property name="classRoomNo" column="CLASSROOMNO" type="string" unique="true"/>
+	</class>
+</hibernate-mapping>

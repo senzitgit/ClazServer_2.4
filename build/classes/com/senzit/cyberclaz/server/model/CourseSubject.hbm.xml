@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.CourseSubject" table="coursesubject">
+	<meta attribute="class-description">
+		This class contains the user course subject detail.
+	</meta>
+		<id name="courseSubjectId" column="COURSESUBJECTID">
+		    <generator class="increment"></generator>
+        </id>
+     	<many-to-one name="course" column="COURSEID" class="com.senzit.cyberclaz.server.model.Course">	
+     	</many-to-one>
+     	<many-to-one name="semester" column="SEMESTERID" class="com.senzit.cyberclaz.server.model.Semester">	
+     	</many-to-one>
+     	<many-to-one name="subject" column="SUBJECTID" class="com.senzit.cyberclaz.server.model.Subject">	
+     	</many-to-one>
+	</class>
+</hibernate-mapping>

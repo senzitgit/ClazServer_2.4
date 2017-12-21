@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 30, 2014 5:16:58 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.senzit.cyberclaz.server.model.Attachment" table="attachment">
+        <id name="attachmentId" type="int">
+            <column name="ATTACHMENTID" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="classEventDetail" class="com.senzit.cyberclaz.server.model.ClassEventDetail" fetch="join">
+            <column name="CLASSEVENTDETAILID" />
+        </many-to-one>
+        <property name="attachmentName" type="java.lang.String">
+            <column name="ATTACHMENTNAME" />
+        </property>
+        <property name="attachmentLink" type="java.lang.String">
+            <column name="ATTACHMENTLINK" />
+        </property>
+        <property name="attachmentType" type="java.lang.String">
+            <column name="ATTACHMENTTYPE" />
+        </property>
+        <property name="createdOn" type="java.sql.Timestamp">
+            <column name="CREATEDON" />
+        </property>
+          <property name="type" type="byte">
+            <column name="TYPE" />
+        </property>
+    </class>
+</hibernate-mapping>

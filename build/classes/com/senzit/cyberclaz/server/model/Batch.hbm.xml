@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.Batch" table="batch">
+	<meta attribute="class-description">
+		This class contains the batch detail.
+	</meta>
+		<id name="batchId" column="BATCHID">
+        </id>
+		<property name="batchName" column="BATCHNAME" type="string"/>
+	</class>
+</hibernate-mapping>

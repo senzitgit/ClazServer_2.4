@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+<class name="com.senzit.cyberclaz.server.model.User" table="user">
+	<meta attribute="class-description">
+		This class contains the user detail(Both techer and student details).
+	</meta>
+		<id name="userId" column="USERID">
+        </id>
+		<property name="firstName" column="FIRSTNAME" type="string"/>
+		<property name="lastName" column="LASTNAME" type="string"/>
+		<property name="middleName" column="MIDDLENAME" type="string"/>
+		<property name="profilePic" column="PROFILEPIC" type="string"/>
+		<property name="dob" column="DOB" type="string"/>
+		<property name="emailId" column="EMAILID" type="string"/>
+		<property name="mobileNo" column="MOBILENUMBER" type="string"/>
+		<property name="address" column="ADDRESS" type="string"/>
+		<property name="regFlag" column="REGFLAG" type="string"/>
+		<property name="roleType" column="ROLE" type="string"/>
+		
+	</class>
+</hibernate-mapping>

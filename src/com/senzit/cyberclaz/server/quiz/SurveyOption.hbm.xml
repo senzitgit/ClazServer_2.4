@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.senzit.cyberclaz.server.quiz.SurveyOption" table="survey_option">
+	
+		<id name="optionId" column="OPTIONID">
+			<generator class="native"></generator>
+        </id>
+		<property name="option" column="OPTION_VALUE"/>
+		<many-to-one name="question" class="com.senzit.cyberclaz.server.quiz.SurveyQuestion" column="QNID">
+        </many-to-one>
+        
+	</class>
+</hibernate-mapping>

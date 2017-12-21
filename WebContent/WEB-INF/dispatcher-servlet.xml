@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+                           http://www.springframework.org/schema/mvc
+                           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+                           http://www.springframework.org/schema/websocket
+                           http://www.springframework.org/schema/websocket/spring-websocket-4.0.xsd">
+
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.senzit.cyberclaz.server" />
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="testOnBorrow" value="true"/>
+        <property name="validationQuery" value="SELECT 1"/>
+		
+	<!--  <property name="url" value="jdbc:mysql://192.168.10.50:3306/cyberclaz" />
+		<property name="username" value="senzit" />
+		<property name="password" value="senzituser^" />
+		 -->
+				
+	 	
+		 <property name="url" value="jdbc:mysql://us-cdbr-sl-dfw-01.cleardb.net/ibmx_91da8760bf45057" />
+		<property name="username" value="becf78017a2554" />
+		<property name="password" value="4782e926" />  
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:com/senzit/cyberclaz/server/model/User.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/UserLogin.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Role.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/UserRole.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Privilege.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/RolePrivilege.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/ClassRoom.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Rebbon.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Log.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Course.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Semester.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Batch.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Day.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Period.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Subject.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/CourseBatch.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/CourseSubject.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Holiday.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Schedule.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/StudentBatch.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/SubjectTeacher.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/ClassEventDetail.hbm.xml 
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Note.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Attendance.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Attachment.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Notification.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/Viewers.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/VideoRating.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/MultimediaLibrary.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/TempSchedule.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/ManagerSettings.hbm.xml
+				</value>
+				
+				
+				<value>classpath:com/senzit/cyberclaz/server/quiz/Poll.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/PollOption.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/PollResult.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/QuestionOption.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/Quiz.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/QuizQuestion.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/QuizUser.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/Survey.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/SurveyOption.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/SurveyQuestion.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/quiz/SurveyUser.hbm.xml
+				</value>
+				
+				
+				<value>classpath:com/senzit/cyberclaz/server/cognos/AssignedTask.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/AttendanceReport.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/FutureGoals.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/MaximumHours.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/ProgressReports.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/TargetProgress.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/TeacherRecommendation.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/TopPerformer.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/model/TopSession.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/SubjectPerformance.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/TargetPassPercentage.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/TargetAttendancePercentage.hbm.xml
+				</value>
+				<value>classpath:com/senzit/cyberclaz/server/cognos/AddAssignment.hbm.xml
+				</value>
+				
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" />
+		</tx:attributes>
+	</tx:advice>
+	<aop:config>
+		<aop:pointcut id="cyberOperation"
+			expression="execution(* com.senzit.cyberclaz.server.model.UserDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.LogDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.RebbonDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.StudentBatchDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.ClazEventDetailDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.SchedulerDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.NoteDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.AttachmentDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.NotificationDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.CourseSubjectDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.SubjectTeacherDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.AttendanceDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.ViewersDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.VideoRatingDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.MultimediaDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.TempScheduleDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.CourseDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.SemesterDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.BatchDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.ClassRoomDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.SubjectDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.DayDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.PeriodDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.CourseBatchDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.model.ManagerSettingsDao.*(..))
+        				 			 ||execution(* com.senzit.cyberclaz.server.service.QuizService.*(..))
+        				 			 
+        				 			  ||execution(* com.senzit.cyberclaz.server.cognos.AssignedTaskDao.*(..))
+        				 			  ||execution(* com.senzit.cyberclaz.server.cognos.AttendanceReportDao.*(..))
+        				 			  ||execution(* com.senzit.cyberclaz.server.cognos.FutureGoalsDao.*(..))
+        				 			  ||execution(* com.senzit.cyberclaz.server.cognos.MaximumHoursDao.*(..))
+        				 			  ||execution(* com.senzit.cyberclaz.server.cognos.ProgressReportsDao.*(..))
+        				 			  ||execution(* com.senzit.cyberclaz.server.cognos.TargetProgressDao.*(..))
+        				 			  ||execution(* com.senzit.cyberclaz.server.cognos.TeacherRecommendationDao.*(..))
+        				 			   ||execution(* com.senzit.cyberclaz.server.model.TopSessionDao.*(..))
+        				 			   ||execution(* com.senzit.cyberclaz.server.cognos.TopPerformerDao.*(..))
+        				 			   ||execution(* com.senzit.cyberclaz.server.cognos.SubjectPerformanceDao.*(..))
+        				 			   ||execution(* com.senzit.cyberclaz.server.cognos.TargetPassPercentageDao.*(..))
+        				 			   ||execution(* com.senzit.cyberclaz.server.cognos.TargetAttendancePercentageDao.*(..))
+        				 			     ||execution(* com.senzit.cyberclaz.server.cognos.AddAssignmentDao.*(..))
+        				 			 " />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="cyberOperation" />
+	</aop:config>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- <property name="maxUploadSize" value="268435456"/> -->
+	</bean>
+
+	<!-- DAO Beans -->
+	<bean id="userdao" class="com.senzit.cyberclaz.server.model.UserDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="logdao" class="com.senzit.cyberclaz.server.model.LogDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="rebbondao" class="com.senzit.cyberclaz.server.model.RebbonDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="studentbatchdao" class="com.senzit.cyberclaz.server.model.StudentBatchDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="clazeventdetaildao" class="com.senzit.cyberclaz.server.model.ClazEventDetailDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="schedulerdao" class="com.senzit.cyberclaz.server.model.SchedulerDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="notedao" class="com.senzit.cyberclaz.server.model.NoteDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="attachmentdao" class="com.senzit.cyberclaz.server.model.AttachmentDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="notificationdao" class="com.senzit.cyberclaz.server.model.NotificationDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="coursesubjectdao" class="com.senzit.cyberclaz.server.model.CourseSubjectDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="attendancedao" class="com.senzit.cyberclaz.server.model.AttendanceDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+   <bean id="subjecteacherdao" class="com.senzit.cyberclaz.server.model.SubjectTeacherDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="viewersdao" class="com.senzit.cyberclaz.server.model.ViewersDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="videorating" class="com.senzit.cyberclaz.server.model.VideoRatingDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="multimediadao" class="com.senzit.cyberclaz.server.model.MultimediaDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="tempscheduledao" class="com.senzit.cyberclaz.server.model.TempScheduleDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="coursedao" class="com.senzit.cyberclaz.server.model.CourseDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="semesterdao" class="com.senzit.cyberclaz.server.model.SemesterDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="batchdao" class="com.senzit.cyberclaz.server.model.BatchDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="classroomdao" class="com.senzit.cyberclaz.server.model.ClassRoomDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="subjectdao" class="com.senzit.cyberclaz.server.model.SubjectDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="daydao" class="com.senzit.cyberclaz.server.model.DayDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="perioddao" class="com.senzit.cyberclaz.server.model.PeriodDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="coursebatchdao" class="com.senzit.cyberclaz.server.model.CourseBatchDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+		<bean id="managersettingsdao" class="com.senzit.cyberclaz.server.model.ManagerSettingsDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	<bean id="assignedtaskdao" class="com.senzit.cyberclaz.server.cognos.AssignedTaskDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="attendancereportdao" class="com.senzit.cyberclaz.server.cognos.AttendanceReportDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="futuregoalsdao" class="com.senzit.cyberclaz.server.cognos.FutureGoalsDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="maximumhoursdao" class="com.senzit.cyberclaz.server.cognos.MaximumHoursDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="progressreportsdao" class="com.senzit.cyberclaz.server.cognos.ProgressReportsDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="targetprogressdao" class="com.senzit.cyberclaz.server.cognos.TargetProgressDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="teacherrecommendationdao" class="com.senzit.cyberclaz.server.cognos.TeacherRecommendationDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="topsessiondao" class="com.senzit.cyberclaz.server.model.TopSessionDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="topperformerdao" class="com.senzit.cyberclaz.server.cognos.TopPerformerDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="subjectperformancedao" class="com.senzit.cyberclaz.server.cognos.SubjectPerformanceDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="targetpasspercentagedao" class="com.senzit.cyberclaz.server.cognos.TargetPassPercentageDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="targetattendancepercentagedao" class="com.senzit.cyberclaz.server.cognos.TargetAttendancePercentageDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="addassignmentdao" class="com.senzit.cyberclaz.server.cognos.AddAssignmentDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="quizdao" class="com.senzit.cyberclaz.server.model.QuizDaoImp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Service Beans -->
+	
+	
+	
+	
+	<bean id="userservice" class="com.senzit.cyberclaz.server.service.UserServicesImp">
+		<property name="userDao" ref="userdao"></property>
+		<property name="logDao" ref="logdao"></property>
+		<property name="studentBatchDao" ref="studentbatchdao"></property>
+		<property name="courseSubjectDao" ref="coursesubjectdao"></property>
+		<property name="videoRating" ref="videorating"></property>
+		<property name="subjectTeacherDao" ref="subjecteacherdao"></property>
+		<property name="managerSettingsDao" ref="managersettingsdao"></property>
+	</bean>
+
+	<bean id="recordservice" class="com.senzit.cyberclaz.server.service.RecordServiceImp">
+		<property name="rebbonDao" ref="rebbondao"></property>
+		<property name="clazEventDetailDao" ref="clazeventdetaildao"></property>
+		<property name="schedulerDao" ref="schedulerdao"></property>
+		<property name="userDao" ref="userdao"></property>
+		<property name="logDao" ref="logdao"></property>
+		<property name="noteDao" ref="notedao"></property>
+		<property name="attachmentDao" ref="attachmentdao"></property>
+		<property name="notificationDao" ref="notificationdao"></property>
+		<property name="courseSubjectDao" ref="coursesubjectdao"></property>
+		<property name="attendanceDao" ref="attendancedao"></property>
+        <property name="studentBatchDao" ref="studentbatchdao"></property>
+        <property name="multimediaDao" ref="multimediadao"></property>
+        <property name="maximumHoursDao" ref="maximumhoursdao"></property>
+	</bean>
+
+	<bean id="schedulerservice" class="com.senzit.cyberclaz.server.service.SchedulerServiceImp">
+		<property name="schedulerDao" ref="schedulerdao"></property>
+		<property name="clazEventDetailDao" ref="clazeventdetaildao"></property>
+		<property name="tempScheduleDao" ref="tempscheduledao"></property>
+		
+	</bean>
+	
+	<bean id="playerservice" class="com.senzit.cyberclaz.server.service.PlayerServiceImp">
+		<property name="clazEventDetailDao" ref="clazeventdetaildao"></property>
+		<property name="attachmentDao" ref="attachmentdao"></property>
+		<property name="noteDao" ref="notedao"></property>
+		<property name="subjectTeacherDao" ref="subjecteacherdao"></property>
+		<property name="notificationDao" ref="notificationdao"></property>
+	    <property name="userDao" ref="userdao"></property>
+		<property name="viewersDao" ref="viewersdao"></property>
+		<property name="topSessionDao" ref="topsessiondao"></property>
+		
+			
+	</bean>
+	
+	<bean id="dashservice" class="com.senzit.cyberclaz.server.service.DashServiceImp">
+		<property name="notificationDao" ref="notificationdao"></property>
+		 <property name="userDao" ref="userdao"></property>
+    </bean>
+    
+  <bean id="portalservice" class="com.senzit.cyberclaz.server.service.PortalServiceImp">
+		<property name="courseDao" ref="coursedao"></property>
+		<property name="semesterDao" ref="semesterdao"></property>
+		<property name="batchDao" ref="batchdao"></property>
+		<property name="classRoomDao" ref="classroomdao"></property>
+		<property name="subjectDao" ref="subjectdao"></property>
+		<property name="dayDao" ref="daydao"></property>
+		<property name="periodDao" ref="perioddao"></property>
+		<property name="courseBatchDao" ref="coursebatchdao"></property>
+		<property name="studentBatchDao" ref="studentbatchdao"></property>
+		<property name="subjectTeacherDao" ref="subjecteacherdao"></property>
+		 <property name="multimediaDao" ref="multimediadao"></property>
+		<property name="schedulerDao" ref="schedulerdao"></property>
+		<property name="courseSubjectDao" ref="coursesubjectdao"></property>
+		
+    </bean>
+    
+  
+   <bean id="cognosservice" class="com.senzit.cyberclaz.server.service.CognosServiceImp">
+		<property name="assignedTaskDao" ref="assignedtaskdao"></property>
+		<property name="attendanceReportDao" ref="attendancereportdao"></property>
+		<property name="futureGoalsDao" ref="futuregoalsdao"></property>
+		<property name="maximumHoursDao" ref="maximumhoursdao"></property>
+		<property name="progressReportsDao" ref="progressreportsdao"></property>
+		<property name="targetProgressDao" ref="targetprogressdao"></property>
+		<property name="teacherRecommendationDao" ref="teacherrecommendationdao"></property>
+		<property name="subjectDao" ref="subjectdao"></property>
+		<property name="attendanceDao" ref="attendancedao"></property>
+		<property name="topSessionDao" ref="topsessiondao"></property>
+		<property name="topPerformerDao" ref="topperformerdao"></property>
+		<property name="studentBatchDao" ref="studentbatchdao"></property>
+		<property name="userDao" ref="userdao"></property>
+		<property name="subjectPerformanceDao" ref="subjectperformancedao"></property>
+		<property name="targetPassPercentageDao" ref="targetpasspercentagedao"></property>
+		<property name="targetAttendancePercentageDao" ref="targetattendancepercentagedao"></property>
+		<property name="courseBatchDao" ref="coursebatchdao"></property>
+		<property name="addAssignmentDao" ref="addassignmentdao"></property>
+   </bean>
+  
+  
+	<bean id="quizservice" class="com.senzit.cyberclaz.server.service.QuizServiceImp">
+		 <property name="quizDao" ref="quizdao"></property>
+    </bean>
+	
+</beans>
