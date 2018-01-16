@@ -29,13 +29,13 @@
 		
 	<!--  <property name="url" value="jdbc:mysql://192.168.10.50:3306/cyberclaz" />
 		<property name="username" value="senzit" />
-		<property name="password" value="senzituser^" />
-		 -->
+		<property name="password" value="senzituser^" />-->
+		
 				
 	 	
 		 <property name="url" value="jdbc:mysql://us-cdbr-sl-dfw-01.cleardb.net/ibmx_91da8760bf45057" />
 		<property name="username" value="becf78017a2554" />
-		<property name="password" value="4782e926" />  
+		<property name="password" value="4782e926" />   
 	</bean>
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">

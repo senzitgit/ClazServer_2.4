@@ -26,7 +26,7 @@ public class RebbonService {
 
 		URL url;
 		try {
-			url = new URL("http://rebbonclaz.mybluemix.net/RebbonHandler");
+			url = new URL("http://192.168.10.50:8080/Rebbon/RebbonHandler");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setDoOutput(true);
 			connection.setRequestMethod("POST");
@@ -89,7 +89,7 @@ public class RebbonService {
 
 		URL url;
 		try {
-			url = new URL("http://rebbonclaz.mybluemix.net/RebbonHandler");
+			url = new URL("http://192.168.10.50:8080/Rebbon/RebbonHandler");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setDoOutput(true);
 			connection.setRequestMethod("POST");
@@ -144,7 +144,7 @@ public class RebbonService {
 
 		URL url;
 		try {
-			url = new URL("http://rebbonclaz.mybluemix.net/RebbonHandler");
+			url = new URL("http://192.168.10.50:8080/Rebbon/RebbonHandler");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setDoOutput(true);
 			connection.setRequestMethod("POST");
@@ -231,7 +231,7 @@ public class RebbonService {
 			hash3.put("Url", url3);
 			cameras.put("CAM3", hash3);
 //	        Hashtable<String,Object> hash4=new Hashtable<String,Object>();
-//			hash4.put("Url", "http://rebbonclaz.mybluemix.net/presantationVideo.mp4");
+//			hash4.put("Url", "http://192.168.10.50:8080/Rebbon/presantationVideo.mp4");
 //			hash4.put("Aud", "");
 //			cameras.put("CAM4", hash4);
 //			
@@ -329,7 +329,7 @@ public class RebbonService {
 
 		URL url;
 		try {
-			url = new URL("http://rebbonclaz.mybluemix.net/RebbonHandler");
+			url = new URL("http://192.168.10.50:8080/Rebbon/RebbonHandler");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setDoOutput(true);
 			connection.setRequestMethod("POST");
@@ -399,7 +399,7 @@ public class RebbonService {
 		URL url;
 		
 		try {
-			url = new URL("http://rebbonclaz.mybluemix.net/RebbonHandler");
+			url = new URL("http://192.168.10.50:8080/Rebbon/RebbonHandler");
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			connection.setDoOutput(true);
 			connection.setRequestMethod("POST");

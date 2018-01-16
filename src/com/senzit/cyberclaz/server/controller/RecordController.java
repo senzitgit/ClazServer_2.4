@@ -370,7 +370,7 @@ import com.senzit.cyberclaz.server.subservice.Convert;
 		            result.put("liveSessionDetails",CurrentliveDetails);
 		            result.put("teacherName", teacherName);
 		            
-		//			
+					
 					
 					if(Integer.parseInt(subjectId)!=0)
 						result.put("scheduleChange", true);
@@ -386,7 +386,7 @@ import com.senzit.cyberclaz.server.subservice.Convert;
 						log.debug(userIdList);
 						log.debug(a);
 						////////////////////////
-						wsObj.writeTextmessage(userIdList, a,false);
+						wsObj.writeTextmessage(userIdList, a,true);
 					} 
 					catch (IOException e) 
 					{
